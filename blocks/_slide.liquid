@@ -9,21 +9,40 @@
       assign preview_image = block_settings.video_1.preview_image
     endif
 
+    assign media_1_mobile = 'none'
+    assign media_image_class = 'slide__image'
+
+    if block_settings.custom_mobile_media and block_settings.image_1_mobile != blank
+      assign media_1_mobile = block_settings.image_1_mobile
+
+      assign media_image_class = media_image_class | append: ' mobile:hidden'
+    endif
+
     assign rounded_image_corners = false
     if block_settings.inherit_color_scheme == true or block_settings.inherit_color_scheme == false and section.settings.color_scheme.settings.background.rgb == block_settings.color_scheme.settings.background.rgb
       assign rounded_image_corners = true
     endif
   %}
-  {% if section.settings.slide_height == 'adapt_image' and block_index == 0 and preview_image != blank %}
+
+  {% if section.settings.slide_height == 'adapt_image' and preview_image != blank and block_settings.media_type_1 != 'video' %}
     {%
       # Great example of why it can be helpful for a section to be able to read the settings of its direct child blocks.
       # In this case, we want the section to be able to read the image aspect ratio of the first slide and apply it to the slideshow slides and slides.
     %}
     {% style %}
-      .shopify-section-{{ section.id }} slideshow-slides,
-      .shopify-section-{{ section.id }} slideshow-slide {
+      #shopify-section-{{ section.id }} slideshow-slides,
+      #shopify-section-{{ section.id }} slideshow-slide {
         min-height: {{ 1 | divided_by: preview_image.aspect_ratio | times: 100 }}vw;
       }
+
+      {% if block_settings.custom_mobile_media and media_1_mobile != 'none' %}
+        @media (max-width: 749px) {
+          #shopify-section-{{ section.id }} slideshow-slides,
+          #shopify-section-{{ section.id }} slideshow-slide {
+            min-height: {{ 1 | divided_by: media_1_mobile.aspect_ratio | times: 100 }}vw;
+          }
+        }
+      {% endif %}
     {% endstyle %}
   {% endif %}
 
@@ -39,6 +58,14 @@
         assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
         assign lazy_sizes = 'auto, ' | append: sizes
         assign widths = '832, 1200, 1600, 1920, 2560, 3840'
+
+        if block_settings.custom_mobile_media == true and media_1_mobile != 'none'
+          assign mobile_height = media_1_mobile.width | divided_by: media_1_mobile.aspect_ratio | round
+          assign mobile_media_width_desktop = '100vw'
+          assign mobile_media_width_mobile = '100vw'
+          assign mobile_sizes = '(min-width: 750px) ' | append: mobile_media_width_desktop | append: ', ' | append: mobile_media_width_mobile
+          assign mobile_lazy_sizes = 'auto, ' | append: mobile_sizes
+        endif
       %}
 
       {%- liquid
@@ -47,6 +74,7 @@
         if block_index == 0 and section_index <= 3
           assign loading = 'eager'
           assign sizes = lazy_sizes
+          assign mobile_sizes = mobile_lazy_sizes
         endif
 
         assign fetchpriority = 'low'
@@ -59,8 +87,15 @@
         {{
           block_settings.image_1
           | image_url: width: 3840
-          | image_tag: height: height, sizes: sizes, widths: widths, class: 'slide__image', loading: loading, fetchpriority: fetchpriority
+          | image_tag: height: height, sizes: sizes, widths: widths, class: media_image_class, loading: loading, fetchpriority: fetchpriority
         }}
+        {% if block_settings.custom_mobile_media == true and media_1_mobile != 'none' %}
+          {{
+            media_1_mobile
+            | image_url: width: 3840
+            | image_tag: height: mobile_height, sizes: mobile_sizes, widths: widths, class: 'slide__image desktop:hidden', loading: loading, fetchpriority: fetchpriority
+          }}
+        {% endif %}
       {%- else -%}
         {%- if block_settings.video_1.preview_image -%}
 
@@ -95,6 +130,12 @@
     style="{% render 'spacing-style', settings: block_settings %}"
     {{ block.shopify_attributes }}
   >
+    {%- if block_settings.link != blank -%} 
+      <a
+        href="{{ block_settings.link }}"
+        class="group-block__link"
+      ></a>
+    {%- endif -%}
     <div
       class="group-block-content
       layout-panel-flex
@@ -198,6 +239,11 @@
   ],
   "settings": [
     {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
       "type": "select",
       "id": "media_type_1",
       "label": "t:settings.type",
@@ -218,6 +264,19 @@
       "id": "image_1",
       "label": "t:settings.image",
       "visible_if": "{{ block.settings.media_type_1 == 'image' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_mobile_media",
+      "label": "t:settings.custom_mobile_media",
+      "default": false,
+      "visible_if": "{{ block.settings.media_type_1 == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1_mobile",
+      "label": "t:settings.image",
+      "visible_if": "{{ block.settings.custom_mobile_media }}"
     },
     {
       "type": "video",
@@ -352,6 +411,37 @@
       "visible_if": "{{ block.settings.content_direction == 'column' }}"
     },
     {
+      "type": "checkbox",
+      "id": "custom_mobile_alignment",
+      "label": "Enable custom mobile alignment",
+      "visible_if": "{{ block.settings.vertical_on_mobile == true or block.settings.content_direction == 'column' }}"
+    },
+    {
+      "type": "select",
+      "id": "mobile_vertical_alignment",
+      "label": "Mobile alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "t:options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:options.center"
+        },
+        {
+          "value": "flex-end",
+          "label": "t:options.right"
+        },
+        {
+          "value": "space-between",
+          "label": "t:options.space_between"
+        }
+      ],
+      "default": "flex-start",
+      "visible_if": "{{ block.settings.custom_mobile_alignment == true and block.settings.vertical_on_mobile == true or block.settings.content_direction == 'column' }}"
+    },
+    {
       "type": "range",
       "id": "gap",
       "label": "t:settings.gap",
@@ -468,6 +558,56 @@
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_mobile_padding",
+      "label": "Custom Mobile Padding",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "mobile-padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.custom_mobile_padding == true }}"
+    },
+    {
+      "type": "range",
+      "id": "mobile-padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.custom_mobile_padding == true }}"
+    },
+    {
+      "type": "range",
+      "id": "mobile-padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.custom_mobile_padding == true }}"
+    },
+    {
+      "type": "range",
+      "id": "mobile-padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "visible_if": "{{ block.settings.custom_mobile_padding == true }}"
     }
   ],
   "presets": [

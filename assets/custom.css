@@ -1,3 +1,7 @@
+:root {
+    --max-width--body-normal: 54.5em !important;
+}
+
 .button-unstyled.slideshow-control.slideshow-control--shape-circle {
     width: var(--minimum-touch-target);
     height: var(--minimum-touch-target);
@@ -11,6 +15,28 @@ slideshow-controls.carousel-controls:has(.icon-pause) {
 slideshow-controls.carousel-controls .icon-pause,
 slideshow-controls.carousel-controls .icon-play {
     display: none !important;
+}
+
+.slideshow-controls__dots button:after {
+    box-shadow: none !important;
+}
+
+.slideshow-control:is(.icon-pause,.icon-play) {
+    display: none !important;
+}
+
+.button {
+    --button-padding-block: 14px !important;
+    font-weight: var(--font-accent--weight);
+}
+
+.section--page-narrow {
+  --page-margin: 16px;
+  --page-width: calc(78rem + (var(--page-margin) * 2)) !important;
+}
+
+.text-block ul {
+    padding-left: 1rem;
 }
 
 @media (max-width: 749px) {
