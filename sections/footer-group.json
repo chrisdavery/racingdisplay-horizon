@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{ 
+{
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
@@ -104,7 +104,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p><strong>Email:</strong><a href=\"mailto:info@racingdisplay.com\" title=\"mailto:info@racingdisplay.com\">info@racingdisplay.com</a><strong><br/>Phone:</strong><a href=\"tel:(954)%C2%A0400%E2%80%911306\" title=\"tel:(954) 400‑1306\">(954) 400‑1306</a><strong><br/>Address:</strong>5520 Glades Cut Off Rd<br/>Fort Pierce, FL 34981</p>",
+                "text": "<p><strong>Email: </strong><a href=\"mailto:info@racingdisplay.com\" title=\"mailto:info@racingdisplay.com\">info@racingdisplay.com</a><strong><br/>Phone: </strong><a href=\"tel:(954)%C2%A0400%E2%80%911306\" title=\"tel:(954) 400‑1306\">(954) 400‑1306</a><strong><br/>Address:</strong>5520 Glades Cut Off Rd<br/>Fort Pierce, FL 34981</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
