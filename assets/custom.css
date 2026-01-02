@@ -51,6 +51,16 @@ slideshow-controls.carousel-controls .icon-play {
     margin: 0 !important;
 }
 
+.use-height-icon img, .use-height-icon svg {
+    width: auto !important;
+    height: var(--height) !important;
+    object-fit: contain;
+}
+
+summary {
+    -webkit-tap-highlight-color: transparent;
+}
+
 @media (min-width: 750px) {
     .header-actions__action svg {
         width: var(--icon-size-lg) !important;
@@ -131,5 +141,9 @@ slideshow-controls.carousel-controls .icon-play {
 
     [style*="--mobile-ratio"] > img,  [style*="--mobile-ratio"] > video {
        aspect-ratio: var(--mobile-ratio) !important;
+    }
+
+    .use-height-icon[style*="--mobile-height"] img, .use-height-icon[style*="--mobile-height"] svg {
+        height: var(--mobile-height) !important;
     }
 }
