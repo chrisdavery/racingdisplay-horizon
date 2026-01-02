@@ -39,6 +39,25 @@ slideshow-controls.carousel-controls .icon-play {
     padding-left: 1rem;
 }
 
+.header {
+    --header-padding: var(--padding-lg) !important;
+}
+
+.email-signup__input, .email-signup__button--text {
+    padding: var(--padding-md) var(--padding-3xl) !important;
+}
+
+.email-signup__button--integrated {
+    margin: 0 !important;
+}
+
+@media (min-width: 750px) {
+    .header-actions__action svg {
+        width: var(--icon-size-lg) !important;
+        height: var(--icon-size-lg) !important;
+    }
+}
+
 @media (max-width: 749px) {
     :is(.carousel--mobile-full-width) > .resource-list__carousel, :is(.carousel--mobile-full-width) > .custom-section-content {
         grid-column: 1 / -1;

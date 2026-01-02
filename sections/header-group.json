@@ -62,7 +62,7 @@
           "settings": {
             "menu": "new-main-navigation",
             "color_scheme": "scheme-1",
-            "type_font_primary_size": "1rem",
+            "type_font_primary_size": "1.125rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "heading",
             "type_case_primary_link": "uppercase",
