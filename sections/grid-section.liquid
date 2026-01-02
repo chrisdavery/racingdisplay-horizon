@@ -288,6 +288,13 @@
       "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true and section.settings.autoplay == true }}"
     },
     {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false,
+      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true and section.settings.autoplay == true }}"
+    },
+    {
       "type": "range",
       "id": "columns",
       "label": "t:settings.columns",
