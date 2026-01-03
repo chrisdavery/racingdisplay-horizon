@@ -15,7 +15,7 @@
         "slide_9TRA6U": {
           "type": "_slide",
           "settings": {
-            "link": "",
+            "link": "shopify://collections/dash-cluster-mounts",
             "media_type_1": "image",
             "image_1": "shopify://shop_images/desktop_image_1-1920x900_jpeg.jpg",
             "custom_mobile_media": true,
@@ -116,7 +116,7 @@
               "type": "button",
               "settings": {
                 "label": "Order Yours Now",
-                "link": "shopify://collections/all",
+                "link": "shopify://collections/dash-cluster-mounts",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -136,7 +136,7 @@
         "slide_cpVX7L": {
           "type": "_slide",
           "settings": {
-            "link": "",
+            "link": "shopify://collections/dash-cluster-mounts",
             "media_type_1": "image",
             "image_1": "shopify://shop_images/desktop_image_2.png",
             "custom_mobile_media": true,
@@ -237,7 +237,7 @@
               "type": "button",
               "settings": {
                 "label": "Order Yours Now",
-                "link": "shopify://collections/all",
+                "link": "shopify://collections/dash-cluster-mounts",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -272,7 +272,7 @@
         "slide_height": "medium",
         "content_position": "on-media",
         "color_scheme": "scheme-5",
-        "icons_style": "arrow",
+        "icons_style": "none",
         "icons_shape": "none",
         "slideshow_controls_style": "dots",
         "autoplay": true,
