@@ -283,6 +283,10 @@ html[scroll-lock] body {
     transform: translateX(-50%);
 }
 
+.product-information__grid--limit-details .product-details>.group-block {
+    max-width: 35rem !important;
+}
+
 @media (min-width: 750px) {
     .header-actions__action svg {
         width: auto !important;

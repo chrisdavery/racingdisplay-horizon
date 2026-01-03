@@ -7,8 +7,19 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
+    "custom_liquid_c7Cd4h": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs', class: 'mobile:hidden' %}",
+        "color_scheme": "",
+        "section_width": "page-narrow",
+        "padding-block-start": 14,
+        "padding-block-end": 0
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -16,17 +27,18 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "grid",
+            "media_presentation": "carousel",
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
-            "icons_style": "arrow",
-            "slideshow_controls_style": "counter",
-            "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "right",
-            "thumbnail_width": 44,
+            "icons_style": "arrows_large",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 72,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
-            "constrain_to_viewport": true,
+            "constrain_to_viewport": false,
             "media_fit": "contain",
             "media_radius": 0,
             "extend_media": false,
@@ -75,12 +87,17 @@
                 "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
+                "reverse_on_mobile": false,
                 "horizontal_alignment": "flex-start",
                 "vertical_alignment": "center",
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
+                "custom_mobile_alignment": false,
+                "mobile_vertical_alignment": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
                 "gap": 12,
+                "enable_mobile_gap": false,
+                "mobile_gap": 12,
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -96,6 +113,8 @@
                 "border_width": 1,
                 "border_opacity": 100,
                 "border_radius": 0,
+                "enable_mobile_radius": false,
+                "mobile_border_radius": 0,
                 "placeholder": "",
                 "toggle_overlay": false,
                 "overlay_color": "#00000026",
@@ -104,7 +123,13 @@
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-end": 0,
+                "custom_mobile_padding": false,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0,
+                "css_class": ""
               },
               "blocks": {
                 "text_xpVMaM": {
@@ -118,6 +143,8 @@
                     "type_preset": "h3",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
+                    "enable_mobile_size": false,
+                    "mobile_font_size": "1rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
@@ -129,7 +156,12 @@
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": false,
+                    "mobile-padding-block-start": 0,
+                    "mobile-padding-block-end": 0,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
                   },
                   "blocks": {}
                 },
@@ -139,12 +171,14 @@
                     "show_sale_price_first": true,
                     "show_installments": false,
                     "show_tax_info": false,
-                    "type_preset": "paragraph",
+                    "type_preset": "h4",
                     "width": "100%",
                     "alignment": "left",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
+                    "enable_mobile_size": false,
+                    "mobile_font_size": "1rem",
                     "letter_spacing": "normal",
                     "case": "none",
                     "color": "var(--color-foreground)",
@@ -176,7 +210,7 @@
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
-                "variant_style": "buttons",
+                "variant_style": "dropdowns",
                 "show_swatches": false,
                 "alignment": "left",
                 "padding-block-start": 0,
@@ -200,6 +234,7 @@
               "blocks": {
                 "quantity": {
                   "type": "quantity",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -214,6 +249,7 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -232,6 +268,8 @@
                 "type_preset": "rte",
                 "font": "var(--font-primary--family)",
                 "font_size": "",
+                "enable_mobile_size": false,
+                "mobile_font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -243,7 +281,12 @@
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-end": 0,
+                "custom_mobile_padding": false,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
               },
               "blocks": {}
             }
@@ -257,12 +300,18 @@
           ]
         }
       },
+      "custom_css": [
+        "media-gallery {--thumbnail-width: 120px !important;}",
+        ".media-gallery--carousel slideshow-arrows .slideshow-control {display: none;}",
+        ".slideshow-controls__thumbnails .slideshow-control img {height: 100%; object-fit: contain;}"
+      ],
       "settings": {
-        "content_width": "content-center-aligned",
+        "content_width": "page-narrow",
         "desktop_media_position": "left",
-        "equal_columns": false,
-        "limit_details_width": false,
+        "equal_columns": true,
+        "limit_details_width": true,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -282,6 +331,8 @@
             "type_preset": "h4",
             "font": "var(--font-primary--family)",
             "font_size": "",
+            "enable_mobile_size": false,
+            "mobile_font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -293,7 +344,12 @@
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -320,6 +376,8 @@
               "name": "t:names.product_card_media",
               "settings": {
                 "image_ratio": "adapt",
+                "media_fit": "cover",
+                "use_custom_images": false,
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -341,6 +399,8 @@
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
+                "enable_mobile_size": false,
+                "mobile_font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -352,7 +412,12 @@
                 "padding-block-start": 4,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-end": 0,
+                "custom_mobile_padding": false,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
               },
               "blocks": {}
             },
@@ -368,6 +433,8 @@
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
+                "enable_mobile_size": false,
+                "mobile_font_size": "1rem",
                 "letter_spacing": "normal",
                 "case": "none",
                 "color": "var(--color-foreground)",
@@ -411,6 +478,7 @@
     }
   },
   "order": [
+    "custom_liquid_c7Cd4h",
     "main",
     "product_recommendations_qggXJq"
   ]
