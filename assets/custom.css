@@ -202,6 +202,10 @@ summary {
     padding: var(--padding-xs) 0 !important;
 }
 
+.menu-drawer__back-button {
+    padding: var(--padding-lg) var(--padding-xl) !important;
+}
+
 @media (min-width: 750px) {
     .header-actions__action svg {
         width: auto !important;
