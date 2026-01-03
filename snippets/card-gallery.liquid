@@ -67,6 +67,10 @@
   endif
 %}
 
+{% capture controls %}
+  {%- render 'scrollbar', observes: 'slideshow-component', default_progress: 1, class: 'card-gallery-scrollbar' -%}
+{% endcapture %}
+
 <div
   ref="cardGallery"
   class="card-gallery card-gallery-{{ block.id }} spacing-style border-style{% if has_badges %} card-gallery--badge-{{ badge_position }}{% endif %}"
@@ -157,6 +161,7 @@
         slides: slides,
         slide_count: image_count,
         show_arrows: show_arrows,
+        controls: controls,
         attributes: slideshow_attributes
       %}
     </a>
@@ -247,6 +252,7 @@
         slides: slides,
         slide_count: media_list_to_show.size,
         show_arrows: show_arrows,
+        controls: controls,
         attributes: slideshow_attributes
       %}
     </a>

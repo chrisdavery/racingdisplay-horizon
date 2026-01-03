@@ -228,6 +228,61 @@ html[scroll-lock] body {
   height: 100%;
 }
 
+.progress-bar {
+    height: .1rem;
+    border-radius: 0;
+    background: var(--color-background);
+    overflow: hidden;
+}
+  
+.progress-bar:before {
+    content: "";
+    height: inherit;
+    background: var(--color-border);
+    transform-origin: var(--transform-origin-start);
+    transform: scaleX(var(--progress, 0));
+    transition: transform .5s ease-in-out;
+    display: block;
+}
+
+.scrollbar {
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-foreground);
+    display: flex;
+}
+  
+.scrollbar__progress {
+    height: .1rem;
+    background: rgb(var(--color-background-rgb) / .6);
+    width: 100%;
+    display: block;
+    position: relative;
+}
+  
+.scrollbar__progress:before {
+    content: "";
+    transform-origin: left;
+    transform: scaleX(var(--scroll-progress));
+    background: var(--color-foreground);
+    will-change: transform;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.card-gallery-scrollbar {
+    bottom: var(--margin-xs);
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    max-width: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media (min-width: 750px) {
     .header-actions__action svg {
         width: auto !important;
