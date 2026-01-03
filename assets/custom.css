@@ -89,10 +89,6 @@ summary {
     line-height: 1em;
 }
 
-.mega-menu__link {
-    text-transform: none !important;
-}
-
 .header__column--right, .header__column--right header-actions:has(.header-action-text) {
     gap: var(--gap-lg) !important;
     margin-inline: 0 !important;
@@ -200,6 +196,8 @@ summary {
 
 .mega-menu__link {
     padding: var(--padding-xs) 0 !important;
+    text-transform: none !important;
+    width: 100%;
 }
 
 .menu-drawer__back-button {
