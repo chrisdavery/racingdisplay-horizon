@@ -102,10 +102,6 @@ summary {
     gap: var(--gap-xs);
 }
 
-.menu-drawer:has(details[open]) {
-    overflow: auto !important;
-}
-
 
 .menu-drawer__backdrop {
     display: none !important;
