@@ -19,8 +19,8 @@
           "settings": {
             "text": "FREE WORLDWIDE SHIPPING | 3 WEEK LEAD TIME ON CUSTOM DASHES",
             "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "font": "var(--font-heading--family)",
+            "font_size": "0.875rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -37,8 +37,8 @@
         "section_width": "page-width",
         "color_scheme": "scheme-5",
         "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "padding-block-start": 12,
+        "padding-block-end": 12
       }
     },
     "header_section": {
@@ -72,13 +72,14 @@
             "image_border_radius": 0,
             "navigation_bar": false,
             "color_scheme_navigation_bar": "",
-            "drawer_accordion": false,
+            "drawer_accordion": true,
             "drawer_accordion_expand_first": false,
-            "drawer_dividers": false
+            "drawer_dividers": true
           },
           "blocks": {}
         }
       },
+      "custom_css": [],
       "settings": {
         "logo_position": "left",
         "menu_position": "left",
@@ -95,11 +96,11 @@
         "localization_row": "top",
         "section_width": "page-narrow",
         "section_height": "standard",
-        "enable_sticky_header": "always",
+        "enable_sticky_header": "scroll-up",
         "divider_width": 0,
         "divider_size": "page-width",
         "border_width": 0,
-        "color_scheme_top": "scheme-4",
+        "color_scheme_top": "scheme-1",
         "color_scheme_bottom": "",
         "color_scheme_transparent": "scheme-6",
         "enable_transparent_header_home": false,

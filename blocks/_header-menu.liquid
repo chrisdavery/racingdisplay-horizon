@@ -100,7 +100,7 @@
             {%- endif -%}
             ref="menuitem"
           >
-            <span class="menu-list__link-title">{{- link.title -}}</span>
+            <span class="menu-list__link-title">{{- link.title -}}</span> {%- if link.links != blank -%}<span class="menu-arrow-icon">{{ 'icon-caret.svg' | inline_asset_content }}</span>{%- endif -%}
           </a>
           {%- if link.links != blank -%}
             <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">

@@ -66,6 +66,16 @@
         {{- 'icon-close.svg' | inline_asset_content -}}
       </span>
     </summary>
+    <button
+      class="button button-unstyled close-button menu-drawer__close-button"
+      type="button"
+      aria-label="{{ 'actions.close' | t }}"
+      on:click="/close"
+    >
+      <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+    </button>
     <div
       data-header-drawer
       class="
@@ -98,7 +108,7 @@
           {%- comment -%}
             Handle menus with fewer than 3 levels of links
           {%- endcomment -%}
-          {% if linklist.levels < 3 %}
+          {% if linklist.levels < 2 %}
             {% assign first_accordion_open = false %}
             {% assign animation_index = 0 %}
             {%- for link in linklist.links -%}
@@ -127,8 +137,8 @@
                         class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
                       >
                         <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
-                        <span class="svg-wrapper icon-plus">
-                          {{- 'icon-plus.svg' | inline_asset_content -}}
+                        <span class="svg-wrapper icon-caret icon-caret--forward">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
                         </span>
                       </summary>
                       {% liquid
@@ -288,6 +298,7 @@
                             <span class="svg-wrapper icon-caret icon-caret--backward">
                               {{- 'icon-caret.svg' | inline_asset_content -}}
                             </span>
+                            {% comment %} <span class="menu-drawer__menu-item-text wrap-text">{{ 'actions.back' | t }}</span> {% endcomment %}
                             <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
                           </button>
                           <button
@@ -818,14 +829,14 @@
 
   .menu-drawer {
     position: fixed;
-    transform: translateX(-100%);
+    width: 100vw;
+    top: var(--header-group-height);
+    height: calc(var(--drawer-height) - var(--header-group-height));
     visibility: hidden;
-    height: var(--drawer-height);
-    width: var(--drawer-width);
+    opacity: 0;
     max-width: var(--drawer-max-width);
     z-index: var(--layer-menu-drawer);
     left: 0;
-    top: 0;
     padding: 0;
     background-color: var(--color-background);
     overflow: auto;
@@ -871,11 +882,14 @@
 
   .menu-open > .menu-drawer,
   .menu-open > .menu-drawer__submenu:not(.menu-drawer__menu--childlist) {
-    transform: translateX(0);
     visibility: visible;
     opacity: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  .menu-open > .menu-drawer__submenu:not(.menu-drawer__menu--childlist) {
+    transform: translateX(0);
   }
 
   .menu-drawer__inner-container {
