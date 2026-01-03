@@ -112,6 +112,10 @@
           "label": "t:options.square"
         },
         {
+          "value": "classic",
+          "label": "Classic"
+        },
+        {
           "value": "landscape",
           "label": "t:options.landscape"
         }
@@ -119,6 +123,40 @@
       "default": "portrait",
       "label": "t:settings.aspect_ratio",
       "info": "t:info.aspect_ratio_adjusted"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "label": "t:settings.media_fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "t:options.cover"
+        },
+        {
+          "value": "contain",
+          "label": "t:options.contain"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_images",
+      "label": "Use Custom images",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1",
+      "visible_if": "{{ block.settings.use_custom_images == true }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2",
+      "visible_if": "{{ block.settings.use_custom_images == true }}"
     },
     {
       "type": "header",
