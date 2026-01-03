@@ -1,5 +1,6 @@
 :root {
     --max-width--body-normal: 54.5em !important;
+    --drawer-height: 100svh;
 }
 
 .button-unstyled.slideshow-control.slideshow-control--shape-circle {
