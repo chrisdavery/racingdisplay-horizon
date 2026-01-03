@@ -201,6 +201,11 @@ summary {
     padding: var(--padding-lg) var(--padding-xl) !important;
 }
 
+.menu-drawer__menu.has-submenu, .menu-drawer__menu--childlist:not(:has(.menu-drawer__animated-element)) {
+    padding-block-end: 100px !important;
+    margin-block-end: 0 !important;
+}
+
 @media (min-width: 750px) {
     .header-actions__action svg {
         width: auto !important;
